@@ -2,28 +2,44 @@ import * as React from 'react'
 import { Dispatch } from "redux"
 import { connect } from 'react-redux'
 import { Action, State, Store } from '../types'
-import { loginUser } from '../actions'
+import { loginUser, logoutUser } from '../actions'
 
-export const App = (props: { loggedIn: boolean, login: (name: string, token: string) => Action }) => {
-    return (
-        <div>
-            App
-        </div>
-    )
-}
+/**
+ * Interfaces and Maps
+ */
 
 const mapStateToProps = (state: State) => ({
-    loggedIn: state.user.loggedIn
+    loggedIn: state.user.loggedIn,
+    name: state.user.name
 })
 
 const mapDispatchToProps = (dispatch: Dispatch<Action>) => ({
-    login: (name: string, token: string) => {
-        dispatch(loginUser(name, token))
-    }
+    login: (name: string, token: string) => dispatch(loginUser(name, token)),
+    logout: () => dispatch(logoutUser())
 })
 
 interface AppProps {
-    loggedIn: boolean
+    loggedIn: boolean,
+    name: string,
+    login: (name: string, token: string) => void,
+    logout: () => void
+}
+
+/**
+ * Components
+ */
+
+export const AppComponent = (props: AppProps) => {
+    return (
+        <div>
+            <h2>{props.loggedIn ? `Logged in as "${props.name}"` : 'Not logged in'}</h2>
+            {
+                !props.loggedIn
+                    ? <button onClick={() => props.login('someUser', 'aToken')}>Fake login</button>
+                    : <button onClick={() => props.logout()}>Fake logout</button>
+            }
+        </div>
+    )
 }
 
 class AppContainer extends React.Component<AppProps> {
@@ -32,13 +48,13 @@ class AppContainer extends React.Component<AppProps> {
         super(props)
     }
 
-    render() {
-        console.log(this.props)
-        const { loggedIn, login } = this.props
 
-        return <App
-            loggedIn={loggedIn}
-            login={login}
+    render() {
+        return <AppComponent
+            loggedIn={this.props.loggedIn}
+            name={this.props.name}
+            login={this.props.login}
+            logout={this.props.logout}
         />
     }
 }
