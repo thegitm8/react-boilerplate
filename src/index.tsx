@@ -1,5 +1,5 @@
 import * as React from 'react'
-import * as reactDom from 'react-dom'
+import { render } from 'react-dom'
 import { Store, createStore, compose, applyMiddleware } from 'redux'
 import logger from 'redux-logger'
 
@@ -20,7 +20,7 @@ const store: Store<any> = createStore(
     )
 )
 
-reactDom.render(
+render(
     <Provider store={store}>
         <App />
     </Provider>,
