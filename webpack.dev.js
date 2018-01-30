@@ -7,20 +7,14 @@ const Dashboard = require('webpack-dashboard')
 const DashboardPlugin = require('webpack-dashboard/plugin')
 const dashboard = new Dashboard()
 
-const PORT = 9002
-
 module.exports = merge(common, {
     devtool: 'inline-source-map',
     devServer: {
-        quiet: true,   // important
+        quiet: true,
         open: true,
     },
     plugins: [
-        new webpack.DefinePlugin({
-            'process.env.NODE_ENV': JSON.stringify('development')
-        }),
-        new DashboardPlugin({
-            handler: dashboard.setData
-        })
+        new webpack.DefinePlugin({ 'process.env.NODE_ENV': JSON.stringify('development') }),
+        new DashboardPlugin({ handler: dashboard.setData })
     ]
 })
