@@ -62,3 +62,4 @@ typings/
 
 # build files
 dist
+/scripts.d/project-setup/figo-defaults
