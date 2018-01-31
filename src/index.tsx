@@ -7,7 +7,7 @@ import logger from 'redux-logger'
 const { Provider } = require('react-redux')
 
 import reducers from './reducers'
-import App from './components'
+import ClientRouter from './components'
 
 const initialState = {};
 
@@ -22,7 +22,7 @@ const store: Store<any> = createStore(
 
 render(
     <Provider store={store}>
-        <App />
+        <ClientRouter />
     </Provider>,
     document.getElementById('root')
 )
