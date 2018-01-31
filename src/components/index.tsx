@@ -1,8 +1,15 @@
 import * as React from 'react'
-import { Dispatch } from "redux"
+import { Dispatch } from 'redux'
 import { connect } from 'react-redux'
 import { Action, State, Store } from '../types'
 import { loginUser, logoutUser } from '../actions'
+import {
+    BrowserRouter as Router,
+    Route,
+    Link
+} from 'react-router-dom'
+
+import Site1 from './site1'
 
 /**
  * Interfaces and Maps
@@ -29,7 +36,8 @@ interface AppProps {
  * Components
  */
 
-export const AppComponent = (props: AppProps) => {
+// export const MainComponent = (props: AppProps) => {
+export const MainComponent = connect(mapStateToProps, mapDispatchToProps)((props: AppProps) => {
     return (
         <div>
             <h2>{props.loggedIn ? `Logged in as "${props.name}"` : 'Not logged in'}</h2>
@@ -40,23 +48,31 @@ export const AppComponent = (props: AppProps) => {
             }
         </div>
     )
-}
+})
 
-class AppContainer extends React.Component<AppProps> {
+class ClientRouter extends React.Component {
 
     constructor(props: any) {
         super(props)
     }
 
-
     render() {
-        return <AppComponent
-            loggedIn={this.props.loggedIn}
-            name={this.props.name}
-            login={this.props.login}
-            logout={this.props.logout}
-        />
+        return (
+            <Router>
+                <div>
+                    <ul>
+                        <li><Link to="/">Home</Link></li>
+                        <li><Link to="/site1">Site 1</Link></li>
+                    </ul>
+
+                    <hr />
+
+                    <Route exact path="/" component={MainComponent} />
+                    <Route path="/site1" component={Site1} />
+                </div>
+            </Router>
+        )
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(AppContainer)
+export default ClientRouter
