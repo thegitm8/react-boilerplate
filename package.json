@@ -1,8 +1,8 @@
 {
   "name": "react-boilerplate",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "private": true,
-  "description": "react typescript boilerplate",
+  "description": "react boilerplate",
   "main": "src/index",
   "scripts": {
     "start": "webpack-dev-server --config webpack.dev.js",
@@ -15,7 +15,6 @@
   "keywords": [
     "react",
     "react-router",
-    "typescript",
     "redux",
     "boilerplate"
   ],
@@ -26,33 +25,34 @@
   },
   "homepage": "https://github.com/thegitm8/react-boilerplate#readme",
   "dependencies": {
-    "@types/node": "^9.3.0",
-    "@types/react": "^16.0.35",
-    "@types/react-dom": "^16.0.3",
-    "@types/react-redux": "^5.0.14",
-    "@types/react-router-dom": "^4.2.3",
-    "@types/redux": "^3.6.0",
-    "@types/redux-logger": "^3.0.5",
-    "@types/webpack": "^3.8.4",
-    "@types/webpack-merge": "^4.1.1",
-    "awesome-typescript-loader": "^3.4.1",
-    "clean-webpack-plugin": "^0.1.17",
-    "favicons-webpack-plugin": "0.0.7",
-    "html-webpack-plugin": "^2.30.1",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-redux": "^5.0.6",
     "react-router-dom": "^4.2.2",
     "redux": "^3.7.2",
-    "redux-logger": "^3.0.6",
-    "source-map-loader": "^0.2.3",
-    "tslint": "^5.9.1",
-    "typescript": "^2.6.2",
+    "redux-logger": "^3.0.6"
+  },
+  "devDependencies": {
+    "babel-loader": "^7.1.2",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-plugin-transform-decorators-legacy": "^1.3.4",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-react": "^6.24.1",
+    "clean-webpack-plugin": "^0.1.17",
+    "css-loader": "^0.28.9",
+    "eslint": "^4.16.0",
+    "eslint-config-figo": "^2.0.0",
+    "extract-text-webpack-plugin": "^3.0.2",
+    "favicons-webpack-plugin": "0.0.7",
+    "html-webpack-plugin": "^2.30.1",
+    "node-sass": "^4.7.2",
+    "sass-loader": "^6.0.6",
+    "style-loader": "^0.20.1",
     "uglifyjs-webpack-plugin": "^1.1.6",
     "webpack": "^3.10.0",
     "webpack-dashboard": "^1.1.1",
     "webpack-dev-server": "^2.11.1",
     "webpack-merge": "^4.1.1"
-  },
-  "devDependencies": {}
+  }
 }
