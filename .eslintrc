@@ -1,0 +1,7 @@
+{
+    "extends": "eslint-config-figo",
+    "env": {
+        "node": true,
+        "mocha": true
+    }
+}
