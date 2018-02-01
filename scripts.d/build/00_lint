@@ -1,0 +1,53 @@
+#!/bin/bash
+
+##############################################################
+# KITT Task build 00_lint
+# All Arguments must be passed via ENV variables
+#
+# To add functionality:
+# 1. Add your command in the startCommand function
+# 2. Set DEFAULT ENV variables if it make sense
+# 3. Adjust help file
+#
+##############################################################
+
+# enforces exit on failure
+set -e
+
+#DEFAULT ENV VARS
+NPM_REGISTRY_HOST=https://npmjs.org
+
+function startCommand {
+    # implement some functionality
+    ./node_modules/.bin/eslint src/
+}
+
+function help {
+    cat << "EOF"
+Usage: ./kitt build 00_lint
+
+<Your description>
+
+ENV VARIABLES:
+
+    * NPM_REGISTRY_HOST
+    * NPM_REGISTRY_PORT
+    * NPM_REGISTRY_TOKEN
+EOF
+}
+
+function init {
+    echo $@
+    # shellcheck disable=SC2194
+    case "$1" in
+        --help)
+            help
+            exit 0
+            ;;
+        *)
+            startCommand
+            exit 0
+    esac
+}
+init $@
+
